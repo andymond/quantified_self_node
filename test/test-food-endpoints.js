@@ -78,4 +78,23 @@ describe('api/v1 foods endpoints', function() {
         })
     })
   })
+
+  describe('POST api/v1/foods', () => {
+    it('creates & returns new food' () => {
+      return chai.request(app)
+        .post('/api/v1/foods')
+        .send(
+          {name: "pizza", calories: "800"}
+        )
+        .then((response) => {
+          response.should.have.status(200)
+          response.should.be.json
+          response.body.should.be.an('array')
+          response.body.length.should.eq(1)
+          response.body[0].id.should.eq(4)
+          response.body[0].name.should.eq("pizza")
+          response.body[0].calories.should.eq("800")
+        })
+    })
+  })
 });
