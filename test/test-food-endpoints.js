@@ -10,7 +10,7 @@ chai.use(chaiHTTP)
 
 describe('api/v1 foods endpoints', function() {
   this.timeout(0)
-  
+
   before((done) => {
     database.migrate.latest()
     .then(() => done())
@@ -48,13 +48,13 @@ describe('api/v1 foods endpoints', function() {
         response.should.have.status(200)
         response.should.be.json
         response.body.should.be.a('array')
-        response.body.count.should.eq(3)
+        response.body.length.should.eq(3)
         response.body[0].id.should.eq(1)
-        response.body[0].name.should.eq("banana")
-        response.body[0].calories.should.eq(100)
+        response.body[0].name.should.eq("ham sandwich")
+        response.body[0].calories.should.eq(700)
         response.body[2].id.should.eq(3)
-        response.body[2].name.should.eq("ham sandwich")
-        response.body[2].id.should.eq(700)
+        response.body[2].name.should.eq("ice cream")
+        response.body[2].calories.should.eq(500)
       })
       .catch((error) => {
         throw error
