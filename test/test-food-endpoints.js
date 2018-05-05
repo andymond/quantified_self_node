@@ -80,7 +80,7 @@ describe('api/v1 foods endpoints', function() {
   })
 
   describe('POST api/v1/foods', () => {
-    it('creates & returns new food' () => {
+    it('creates & returns new food', () => {
       return chai.request(app)
         .post('/api/v1/foods')
         .send(

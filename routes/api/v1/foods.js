@@ -10,4 +10,8 @@ router.get('/:id', (req, res, next) => {
   FoodsController.show(req, res, next)
 })
 
+router.post('/', (req, res, next) => {
+  Foodscontroller.create(req, res, next)
+})
+
 module.exports = router;

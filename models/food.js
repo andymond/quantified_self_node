@@ -10,4 +10,5 @@ module.exports = class Food {
   static find(id) {
     return database('foods').where('id', id)
   }
+
 }

@@ -14,4 +14,10 @@ module.exports = class FoodsController {
       return res.json(food)
     })
   }
+
+  static create(req, res, next) {
+    Food.create(req.params).then((food) => {
+      return res.json(food)
+    })
+  }
 }
