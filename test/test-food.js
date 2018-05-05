@@ -59,7 +59,7 @@ describe("Food", function() {
         .then((food) => {
           food[0].id.should.eq(4)
           food[0].name.should.eq("kiwi")
-          food[0].name.should.eq(100)
+          food[0].calories.should.eq(100)
         })
     })
   })

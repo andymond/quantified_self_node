@@ -11,4 +11,21 @@ module.exports = class Food {
     return database('foods').where('id', id)
   }
 
+  static check(attrs) {
+    if(attrs.name != undefined && attrs.calories != undefined) {
+      return attrs
+    } else {
+      throw "Missing name or calories!"
+    }
+  }
+
+  static create(attrs) {
+    let valid = this.check(attrs);
+    return database('foods').insert({
+      name: valid.name,
+      calories: valid.calories
+    }).returning('*')
+  }
+
+
 }
