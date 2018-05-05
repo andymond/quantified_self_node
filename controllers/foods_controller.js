@@ -7,4 +7,11 @@ module.exports = class FoodsController {
         return res.status(200).json(foods)
       })
   }
+
+  static show(req, res, next) {
+    let id = req.params.id
+    Food.find(id).then((food) => {
+      return res.json(food)
+    })
+  }
 }
