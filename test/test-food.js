@@ -44,12 +44,23 @@ describe("Food", function() {
   describe("find(id)", () => {
     it("finds food from database by id", () => {
       return Food.find(1)
-      .then(function(food) {
+      .then((food) => {
         food[0].id.should.eq(1)
       })
       .catch((error) => {
         throw error;
       })
+    })
+  })
+
+  describe("create(attributes)", () => {
+    it("creates food with correct attributes", () => {
+      return Food.create({name: "kiwi", calories: 100})
+        .then((food) => {
+          food[0].id.should.eq(4)
+          food[0].name.should.eq("kiwi")
+          food[0].name.should.eq(100)
+        })
     })
   })
 
