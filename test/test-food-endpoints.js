@@ -9,6 +9,8 @@ const chaiHTTP = require('chai-http')
 chai.use(chaiHTTP)
 
 describe('api/v1 foods endpoints', function() {
+  this.timeout(0)
+  
   before((done) => {
     database.migrate.latest()
     .then(() => done())
@@ -26,7 +28,7 @@ describe('api/v1 foods endpoints', function() {
     })
     .done();
   })
-  this.timeout(0)
+
   it('should return a 404 with text', () => {
     return chai.request(app)
       .get('/sad')
