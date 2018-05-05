@@ -11,7 +11,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  Foodscontroller.create(req, res, next)
+  FoodsController.create(req, res, next)
 })
 
 module.exports = router;
