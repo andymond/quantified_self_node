@@ -20,7 +20,7 @@ describe('api/v1 foods endpoints', function() {
     .done();
   })
 
-  beforeEach((done) => {
+  before((done) => {
     database.seed.run()
     .then(() => done())
     .catch((error) => {
@@ -48,14 +48,14 @@ describe('api/v1 foods endpoints', function() {
         .then((response) => {
           response.should.have.status(200)
           response.should.be.json
-          response.body.should.be.a('array')
+          response.body.should.be.an('array')
           response.body.length.should.eq(3)
           response.body[0].id.should.eq(1)
-          response.body[0].name.should.eq("ham sandwich")
-          response.body[0].calories.should.eq(700)
+          response.body[0].name.should.eq("banana")
+          response.body[0].calories.should.eq(100)
           response.body[2].id.should.eq(3)
-          response.body[2].name.should.eq("ice cream")
-          response.body[2].calories.should.eq(500)
+          response.body[2].name.should.eq("ham sandwich")
+          response.body[2].calories.should.eq(700)
         })
         .catch((error) => {
           throw error
@@ -70,10 +70,11 @@ describe('api/v1 foods endpoints', function() {
         .then((response) => {
           response.should.have.status(200)
           response.should.be.json
-          response.body.should.be.a('object')
-          response.body.id.should.eq(1)
-          response.body.name.should.eq("ham sandwich")
-          response.body.calories.should.eq(500)
+          response.body.should.be.an('array')
+          response.body.length.should.eq(1)
+          response.body[0].id.should.eq(1)
+          response.body[0].name.should.eq("banana")
+          response.body[0].calories.should.eq(100)
         })
     })
   })
