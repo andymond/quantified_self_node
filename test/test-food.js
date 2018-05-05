@@ -29,14 +29,28 @@ describe("Food", function() {
     .done();
   })
 
-  it("returns all foods from database", () => {
-    Food.all()
+  describe("all()", () => {
+    it("returns all foods from database", () => {
+      return Food.all()
       .then(function(foods) {
         foods.length.should.eq(3)
       })
       .catch((error) => {
         throw error;
       })
+    })
+  })
+
+  describe("find(id)", () => {
+    it("finds food from database by id", () => {
+      return Food.find(1)
+      .then(function(food) {
+        food[0].id.should.eq(1)
+      })
+      .catch((error) => {
+        throw error;
+      })
+    })
   })
 
 })
