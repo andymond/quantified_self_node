@@ -36,8 +36,12 @@ module.exports = class Food {
   }
 
   static destroy(id) {
-    return database('foods').where('id', id)
+    return database('mealfoods').where('food_id', id)
+    .del()
+    .then((id) => {
+      return database('foods').where('id', id)
       .del()
       .returning('*')
+    })
   }
 }
