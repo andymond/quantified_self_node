@@ -64,4 +64,15 @@ describe("Food", function() {
     })
   })
 
+  describe("update(id, attributes)", () => {
+    it("updates existing food with correct attributes", () => {
+      return Food.update(1, {name: "kiwi", calories: 100})
+        .then((food) => {
+          food[0].id.should.eq(1)
+          food[0].name.should.eq("kiwi")
+          food[0].calories.should.eq(100)
+        })
+    })
+  })
+
 })

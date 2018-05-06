@@ -84,7 +84,7 @@ describe('/api/v1/foods endpoints', function() {
       return chai.request(app)
         .post('/api/v1/foods')
         .send(
-          {name: "pizza", calories: "800"}
+          { "food": { "name": "pizza", "calories": 800} }
         )
         .then((response) => {
           response.should.have.status(200)
@@ -98,10 +98,10 @@ describe('/api/v1/foods endpoints', function() {
     })
   })
 
-  describe('PATCH api/v1/foods', () => {
+  describe('PATCH api/v1/foods/:id', () => {
     it('updates & returns new food', () => {
       return chai.request(app)
-        .patch('/api/v1/foods')
+        .patch('/api/v1/foods/1')
         .send(
           { "food": { "name": "banana", "calories": "105" } }
         )
