@@ -34,4 +34,10 @@ module.exports = class Food {
         calories: attrs.calories
       }).returning('*')
   }
+
+  static destroy(id) {
+    return database('foods').where('id', id)
+      .del()
+      .returning('*')
+  }
 }
