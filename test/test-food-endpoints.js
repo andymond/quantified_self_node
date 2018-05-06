@@ -118,15 +118,11 @@ describe('/api/v1/foods endpoints', function() {
   })
 
   describe('DELETE api/v1/foods/:id', () => {
-    it('deletes existing foods', () => {
+    it('deletes existing food by id', () => {
       return chai.request(app)
         .delete('/api/v1/foods/1')
         .then((response) => {
           response.should.have.status(204)
-          response.should.be.json
-          response.body.should.be.an('array')
-          response.body.length.should.eq(1)
-          response.body[0].message.should.eq("food deleted")
         })
     })
   })

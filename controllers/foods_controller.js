@@ -29,4 +29,11 @@ module.exports = class FoodsController {
       return res.json(food)
     })
   }
+
+  static destroy(req, res, next) {
+    let id = req.params.id
+    Food.destroy(id).then(() => {
+      return res.sendStatus(204)
+    })
+  }
 }
