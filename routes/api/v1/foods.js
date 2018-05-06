@@ -14,4 +14,8 @@ router.post('/', (req, res, next) => {
   FoodsController.create(req, res, next)
 })
 
+router.patch('/:id', (req, res, next) => {
+  FoodsController.update(req, res, next)
+})
+
 module.exports = router;
