@@ -30,6 +30,14 @@ describe("Meal", function() {
   })
 
   describe("all()", () => {
-
+    it("returns all meals and their foods", () => {
+      return Meal.all()
+      .then((meals) => {
+        pry = require("pryjs")
+        eval(pry.it)
+        meals.should.be.an('array')
+        meals.length.should.eq(4)
+      })
+    })
   })
 })
