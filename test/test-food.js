@@ -75,4 +75,17 @@ describe("Food", function() {
     })
   })
 
+  describe("destroy(id)", () => {
+    it("deletes and returns existing food by id", () => {
+      return Food.destroy(1)
+        .then((food) => {
+          food[0].id.should.eq(1)
+          food[0].name.should.eq("banana")
+          food[0].calories.should.eq(100)
+        })
+    })
+  })
+
+
+
 })
