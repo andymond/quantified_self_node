@@ -27,5 +27,11 @@ module.exports = class Food {
     }).returning('*')
   }
 
-
+  static update(id, attrs) {
+    return database('foods').where('id', id)
+      .update({
+        name: attrs.name,
+        calories: attrs.calories
+      }).returning('*')
+  }
 }
