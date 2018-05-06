@@ -30,6 +30,6 @@ describe("Meal", function() {
   })
 
   describe("all()", () => {
-    
+
   })
 })

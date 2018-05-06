@@ -48,5 +48,4 @@ describe("/api/v1/meals endpoints", function() {
         throw error
       });
   });
-  })
-})
+});
