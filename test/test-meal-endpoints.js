@@ -30,7 +30,7 @@ describe("/api/v1/meals endpoints", function() {
   })
 
   describe('GET api/v1/meals', () => {
-    it('returns list of all foods', () => {
+    xit('returns list of all foods', () => {
       return chai.request(app)
         .get('/api/v1/meals')
         .then((response) => {
