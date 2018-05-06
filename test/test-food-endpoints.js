@@ -8,7 +8,7 @@ const should = chai.should();
 const chaiHTTP = require('chai-http')
 chai.use(chaiHTTP)
 
-describe('api/v1 foods endpoints', function() {
+describe('/api/v1/foods endpoints', function() {
   this.timeout(0)
 
   before((done) => {
@@ -97,4 +97,24 @@ describe('api/v1 foods endpoints', function() {
         })
     })
   })
+
+  describe('PATCH api/v1/foods', () => {
+    it('updates & returns new food', () => {
+      return chai.request(app)
+        .patch('/api/v1/foods')
+        .send(
+          { "food": { "name": "banana", "calories": "105" } }
+        )
+        .then((response) => {
+          response.should.have.status(200)
+          response.should.be.json
+          response.body.should.be.an('array')
+          response.body.length.should.eq(1)
+          response.body[0].id.should.eq(1)
+          response.body[0].name.should.eq("banana")
+          response.body[0].calories.should.eq(105)
+        })
+    })
+  })
+
 });
