@@ -54,4 +54,26 @@ describe("/api/v1/meals endpoints", function() {
         });
     });
   })
+
+  describe('GET api/v1/meals/:id/foods', () => {
+    it('returns meal with its foods', () => {
+      return chai.request(app)
+        .get('/api/v1/meals/4/foods')
+        .then((response) => {
+          response.should.have.status(200)
+          response.should.be.json
+          response.body.should.be.an('array')
+          response.body.length.should.eq(1)
+          response.body[0].id.should.eq(4)
+          response.body[0].name.should.eq('dinner')
+          response.body[0].foods.should.be.an('array')
+          response.body[1].foods[0].id.should.eq(3)
+          response.body[1].foods[0].name.should.eq("ham sandwich")
+          response.body[1].foods[0].calories.should.eq(700)
+        })
+        .catch((error) => {
+          throw error
+        });
+    });
+  })
 });
