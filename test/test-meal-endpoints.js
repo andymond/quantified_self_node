@@ -30,7 +30,7 @@ describe("/api/v1/meals endpoints", function() {
   })
 
   describe('GET api/v1/meals', () => {
-    xit('returns list of all foods', () => {
+    it('returns list of all meals with their foods', () => {
       return chai.request(app)
         .get('/api/v1/meals')
         .then((response) => {
@@ -41,9 +41,13 @@ describe("/api/v1/meals endpoints", function() {
           response.body[0].id.should.eq(1)
           response.body[0].name.should.eq('breakfast')
           response.body[0].foods.should.be.an('array')
-          response.body[2].id.should.eq(3)
-          response.body[2].name.should.eq('dinner')
-          response.body[2].foods.should.be.an('array')
+          should.equal(response.body[0].foods[0], null)
+          response.body[3].id.should.eq(4)
+          response.body[3].name.should.eq('dinner')
+          response.body[3].foods.should.be.an('array')
+          response.body[3].foods[0].id.should.eq(3)
+          response.body[3].foods[0].name.should.eq("ham sandwich")
+          response.body[3].foods[0].calories.should.eq(700)
         })
         .catch((error) => {
           throw error
