@@ -6,4 +6,8 @@ router.get('/', (req, res, next) => {
   MealsController.index(req, res, next)
 })
 
+router.get('/:id/foods', (req, res, next) => {
+  MealsController.show(req, res, next)
+})
+
 module.exports = router

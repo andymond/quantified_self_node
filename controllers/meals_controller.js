@@ -7,4 +7,11 @@ module.exports = class MealsController {
         return res.json(meals)
       })
   }
+
+  static show(req, res, next) {
+    Meal.find(id)
+      .then((meal) => {
+        return res.json(meal)
+      })
+  }
 }
