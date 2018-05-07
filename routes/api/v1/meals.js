@@ -1,6 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var MealsController = require("../../../controllers/meals_controller")
+const express = require('express');
+const router = express.Router();
+const MealsController = require("../../../controllers/meals_controller")
+const MealFoodsController = require("../../../controllers/mealfoods_controller")
+
 
 router.get('/', (req, res, next) => {
   MealsController.index(req, res, next)
@@ -8,6 +10,10 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id/foods', (req, res, next) => {
   MealsController.show(req, res, next)
+})
+
+router.post('/:meal_id/foods/:id', (req, res, next) => {
+  MealFoodsController.create(req, res, next)
 })
 
 module.exports = router
