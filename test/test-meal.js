@@ -33,7 +33,6 @@ describe("Meal", function() {
     it("returns all meals and their foods", () => {
       return Meal.all()
       .then((meals) => {
-        pry = require("pryjs")
         meals.length.should.eq(4)
         meals[0].id.should.eq(1)
         meals[0].name.should.eq("breakfast")
@@ -45,6 +44,18 @@ describe("Meal", function() {
         meals[3].foods[0].id.should.eq(3)
         meals[3].foods[0].name.should.eq("ham sandwich")
         meals[3].foods[0].calories.should.eq(700)
+      })
+    })
+  })
+
+  describe("find(id)", () => {
+    it("returns meal and its foods by id", () => {
+      return Meal.find(2)
+      .then((meal) => {
+        meal.length.should.eq(1)
+        meal[0].id.should.eq(2)
+        meal[0].name.should.eq("snack")
+        meal[0].foods.should.be.an('array')
       })
     })
   })
