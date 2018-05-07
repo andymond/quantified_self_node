@@ -32,10 +32,22 @@ describe("MealFood", function() {
   describe("create()", () => {
     it("creates relationship between meal and food", () => {
       return MealFood.create({meal_id: 1, food_id: 1})
-      .then((mealfood) => {
-        mealfood.should.be.an('array')
-        mealfood[0].meal_name.should.eq('breakfast')
-        mealfood[0].food_name.should.eq('banana')
+      .then((message) => {
+        message.should.be.an('array')
+        message[0].meal_name.should.eq('breakfast')
+        message[0].food_name.should.eq('banana')
+      })
+    })
+  })
+
+  describe("destroy()", () => {
+    it("destroys relationship between meal and food", () => {
+      let names = MealFood.data
+      return MealFood.destroy({meal_id: 1, food_id: 1})
+      .then(() => {
+        names.should.be.an('array')
+        names[0].meal_name.should.eq('breakfast')
+        names[0].food_name.should.eq('banana')
       })
     })
   })

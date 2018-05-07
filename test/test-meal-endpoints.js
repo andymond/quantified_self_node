@@ -92,4 +92,20 @@ describe("/api/v1/meals endpoints", function() {
         });
     });
   })
+
+  describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
+    it('removes food from meal', () => {
+      return chai.request(app)
+        .delete('/api/v1/meals/4/foods/1')
+        .then((response) => {
+          response.should.have.status(200)
+          response.should.be.json
+          response.body.should.be.an('object')
+          response.body.message.should.eq("Successfully removed banana from dinner")
+        })
+        .catch((error) => {
+          throw error
+        });
+    });
+  })
 });
