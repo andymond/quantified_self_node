@@ -34,8 +34,8 @@ describe("MealFood", function() {
       return MealFood.create({meal_id: 1, food_id: 1})
       .then((mealfood) => {
         mealfood.should.be.an('array')
-        mealfood[0].meal_id.should.eq(1)
-        mealfood[0].food_id.should.eq(1)
+        mealfood[0].meal_name.should.eq('breakfast')
+        mealfood[0].food_name.should.eq('banana')
       })
     })
   })

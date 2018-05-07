@@ -78,15 +78,14 @@ describe("/api/v1/meals endpoints", function() {
   })
 
   describe('POST /api/v1/meals/:meal_id/foods/:id', () => {
-    xit('adds food to meal', () => {
+    it('adds food to meal', () => {
       return chai.request(app)
-        .get('/api/v1/meals/4/foods/1')
+        .post('/api/v1/meals/4/foods/1')
         .then((response) => {
           response.should.have.status(201)
           response.should.be.json
-          response.body.should.be.an('array')
-          response.body.length.should.eq(1)
-          response.body[0].message.should.eq("Successfully added banana to dinner")
+          response.body.should.be.an('object')
+          response.body.message.should.eq("Successfully added banana to dinner")
         })
         .catch((error) => {
           throw error
