@@ -9,7 +9,7 @@ module.exports = class MealsController {
   }
 
   static show(req, res, next) {
-    Meal.find(id)
+    Meal.find(req.params.id)
       .then((meal) => {
         return res.json(meal)
       })

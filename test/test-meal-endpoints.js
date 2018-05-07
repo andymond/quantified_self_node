@@ -67,9 +67,9 @@ describe("/api/v1/meals endpoints", function() {
           response.body[0].id.should.eq(4)
           response.body[0].name.should.eq('dinner')
           response.body[0].foods.should.be.an('array')
-          response.body[1].foods[0].id.should.eq(3)
-          response.body[1].foods[0].name.should.eq("ham sandwich")
-          response.body[1].foods[0].calories.should.eq(700)
+          response.body[0].foods[0].id.should.eq(3)
+          response.body[0].foods[0].name.should.eq("ham sandwich")
+          response.body[0].foods[0].calories.should.eq(700)
         })
         .catch((error) => {
           throw error
