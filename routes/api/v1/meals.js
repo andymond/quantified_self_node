@@ -16,4 +16,8 @@ router.post('/:meal_id/foods/:food_id', (req, res, next) => {
   MealFoodsController.create(req, res, next)
 })
 
+router.delete('/:meal_id/foods/:food_id', (req, res, next) => {
+  MealFoodsController.destroy(req, res, next)
+})
+
 module.exports = router

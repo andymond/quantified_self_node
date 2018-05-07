@@ -1,15 +1,29 @@
 const environment = process.env.NODE_ENV || 'development'
 const configuration = require('../knexfile')[environment]
 const database = require('knex')(configuration)
-const pry = require("pryjs")
+
 
 module.exports = class MealFood {
+  constructor(data) {
+    this.data = data
+  }
+
   static create(ids) {
     return database('mealfoods')
       .insert({meal_id: ids.meal_id, food_id: ids.food_id})
       .returning('*')
-      .then((ids) => {
-        return this.message(ids[0])
+      .then(() => {
+        return this.message(ids)
+      })
+  }
+
+  static destroy(ids) {
+    return database('mealfoods')
+      .where({meal_id: ids.meal_id, food_id: ids.food_id})
+      .del()
+      .returning('*')
+      .then(() => {
+        return this.message(ids)
       })
   }
 
@@ -20,6 +34,7 @@ module.exports = class MealFood {
       .join('foods', 'foods.id', 'mealfoods.food_id')
       .join('meals', 'meals.id', 'mealfoods.meal_id')
       .then((names) => {
+        this.data = names
         return names
       })
   }
