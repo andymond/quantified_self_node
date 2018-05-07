@@ -12,7 +12,7 @@ router.get('/:id/foods', (req, res, next) => {
   MealsController.show(req, res, next)
 })
 
-router.post('/:meal_id/foods/:id', (req, res, next) => {
+router.post('/:meal_id/foods/:food_id', (req, res, next) => {
   MealFoodsController.create(req, res, next)
 })
 
