@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     id SERIAL PRIMARY KEY NOT NULL,
     name TEXT,
     calories INTEGER
-  )`
+  );`
   return knex.raw(createQuery)
 };
 
