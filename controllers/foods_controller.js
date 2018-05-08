@@ -12,13 +12,13 @@ module.exports = class FoodsController {
   static show(req, res, next) {
     let id = req.params.id
     Food.find(id).then((food) => {
-      return res.json(food)
+      return res.json(food[0])
     })
   }
 
   static create(req, res, next) {
     Food.create(req.body.food).then((food) => {
-      return res.json(food)
+      return res.json(food[0])
     })
   }
 
